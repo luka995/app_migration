@@ -1,0 +1,66 @@
+#!/usr/bin/php
+<?php
+
+$special = [
+    #Akademija
+    [
+        'db'      => 'nasaskola_akad',
+        'dbpass'  => 'c42d1a5f',
+        'putanja' => 'akademija'
+    ],
+    #buvlja
+    [
+        'db'      => 'nasaskola_buvlja',
+        'dbpass'  => '49206a34',
+        'putanja' => 'buvljapijaca'
+    ],
+    #biblioteka
+    [
+        'db'      => 'nasaskola_bib',
+        'dbpass'  => 'bib123456',
+        'putanja' => 'ebiblioteka'
+    ],
+    #dnevnik
+    [
+        'db'      => 'nasaskola_edv',
+        'dbpass'  => 'b70f9b8c',
+        'putanja' => 'eskolskidnevnik/dnevnik'
+    ],
+    #dnevnik sajt
+    [
+        'db'      => 'nasaskola_dsajt',
+        'dbpass'  => 'ulaz123456',
+        'putanja' => 'eskolskidnevnik'
+    ],
+    #fbsoft
+    [
+        'db'      => 'nasaskola_fbsoft',
+        'dbpass'  => '7efa8538',
+        'putanja' => 'fbsoft'
+    ],
+    #nasaskola
+    [
+        'db'      => 'nasaskola_glavna',
+        'dbpass'  => 'da90ce7a',
+        'putanja' => 'htdocs'
+    ],
+    #pial
+    [
+        'db'      => 'nasaskola_pial',
+        'dbpass'  => 'da681986',
+        'putanja' => 'pial'
+    ],
+    #pes
+    [
+        'db'      => 'nasaskola_pes',
+        'dbpass'  => '4f91efe6',
+        'putanja' => 'pes_org_rs'
+    ],
+];
+
+$conn = new \PDO('mysql:host=localhost;dbname=nasaskola_glavna', 'nasaskola_glavna', 'da90ce7a');
+$stm = $conn->query("SELECT * FROM instalacija");
+$dbs = $stm->fetchAll(PDO::FETCH_ASSOC);
+$dbs = array_merge($special, $dbs);
+
+echo json_encode($dbs);
